@@ -30,8 +30,17 @@ class App extends React.Component {
     this.setState({ korisnici: noviKorisnici });
   };
 
+  promjenaImena = event => {
+      const { korisnici } = this.state;
+      let noviKorisnici = [...korisnici];
+      noviKorisnici[0].ime = event.target.value;
+      this.setState({ korisnici: noviKorisnici });
+    };
+
   render() {
+   
     const { korisnici } = this.state;
+    
 
     return (
       <div>
@@ -39,6 +48,7 @@ class App extends React.Component {
         <UserFunction
           ime={korisnici[0].ime}
           godine={korisnici[0].godine}
+          onNameChange = {this.promjenaImena}
         ></UserFunction>
 
         <UserClass
